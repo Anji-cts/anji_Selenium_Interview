@@ -1,0 +1,591 @@
+*******************************************************************************************************************************************
+MAVEN installation 1.4 version link to eclipse Juno Version - http://download.eclipse.org/technology/m2e/releases/1.4
+
+Maven - How to add third party Jars to Maven Local repository and use them in POM file - 
+
+Launch CMD prompt and navigate to the Project directory
+Execute the below command
+mvn install:install-file -Dfile=C:\Users\harikaadmin1\Desktop\Workspace_anji\SeleniumDrivers\ATUTestRecorder_2.1\ATUTestRecorder_2.1.jar  -DgroupId=atu.testrecorder.ATUTestRecorder  -DartifactId=ATUTestRecorder -Dversion=2.1 -Dpackaging=jar
+Now add the dependency jar to POM file as below:
+<dependency>
+        <groupId>atu.testrecorder.ATUTestRecorder</groupId>
+        <artifactId>ATUTestRecorder</artifactId>
+        <version>2.1</version>
+ </dependency>
+**********************************************************************************************************************************************************************************
+Sample POM file 
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>QASiteFrameDesign</groupId>
+  <artifactId>QASiteFrameDesign</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <resources>
+      <resource>
+        <directory>src</directory>
+        <excludes>
+          <exclude>**/*.java</exclude>
+        </excludes>
+      </resource>
+    </resources>
+    <plugins>
+    <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.18.1</version>
+				<configuration>
+					<suiteXmlFiles>
+						<!-- TestNG suite XML files -->
+						<suiteXmlFile>testng.xml</suiteXmlFile>
+					</suiteXmlFiles>
+				</configuration>
+			</plugin>
+    
+    </plugins>
+  </build>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+     <groupId>org.seleniumhq.selenium</groupId>
+     <artifactId>selenium-java</artifactId>
+     <version>2.53.1</version>
+   </dependency>  
+    <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+<dependency>
+    <groupId>org.testng</groupId>
+    <artifactId>testng</artifactId>
+    <version>6.8</version>
+</dependency>
+
+ <dependency>
+  <groupId>log4j</groupId>
+  <artifactId>log4j</artifactId>
+  <version>1.2.14</version>
+  </dependency>
+  <dependency>
+    <groupId>org.apache.velocity</groupId>
+    <artifactId>velocity</artifactId>
+    <version>1.7</version>
+</dependency>
+<dependency>
+        <groupId>atu.testrecorder.ATUTestRecorder</groupId>
+        <artifactId>ATUTestRecorder</artifactId>
+        <version>2.1</version>
+ </dependency>
+
+  </dependencies>  
+</project>
+********************************************************************************************************************************
+
+
+Page Object Model - Framework
+
+Connections - > 
+          1. Chrome Connection
+          2. Firefox Conections
+
+Locators ->
+  Total 4 Pages are there - 
+        1. Home Page locators
+        2. Folders Page locators
+        3. Groups Page Locators
+Methods - >
+        1. Verify Home page()
+        2. Verify Signin()
+        3. SinginBtn()
+        4. 
+
+TestCases - 
+
+Create test methods to call the above created methods
+
+
+
+Utitlity - 
+Log4j files for the logs generation
+Excel files for the input data(Test Data)
+******************************************************************************************************************************************
+Listeners:
+
+TestNG manages everything through Suite, Test and Methods and the Listeners gives us the ability to act before and after of every Suite, Test and Methods.(i.e. to write our own log files/output statements/to add statements to reports)
+
+We have many types of listeners available in TestNG 
+IAnnotationTransformer, IAnnotationTransformer2, IConfigurable, IConfigurationListener, IConfigurationListener2, IExecutionListener, IHookable, IInvokedMethodListener, IInvokedMethodListener2, IMethodInterceptor, IReporter, ISuiteListener, ITestListener
+
+From the above we need the below for better reporting - 
+1. ISuiteListener
+2. ITestListener
+3. IReporter
+4. IInvokeMethodListener
+
+ISuiteListener: It has two method in it 
+1. onStart() & 
+2. onFinish(). 
+If any class implements this listener, TestNG will invoke the methods onStart() and onFinish() before and after running a TestNG Suite. 
+So before TestNG picks up your suite for execution, it first makes a call to onStart() method and runs whatever has been scripted in this method. In a similar way, it again makes a call to onFinish() method after a suite has been run
+
+ITestListener: it has 7 methods in it ,it will make a call before and after of each Test same as like IsuiteListener
+1. onStart() - Invoked after the test class is instantiated and before any configuration method is called
+2. onFinish() - Invoked after all the tests have run and all their Configuration methods have been called.
+3. onTestStart(ItestResult result) - 
+4. onTestSuccess(ItestResult result) - 
+5. onTestFailed(ItestResult result) - 
+6. onTestSkipped(ITestResult result) - 
+7. onTestFailedButWithinSuccessPercentage(ITestResult result) 
+
+IInvokeMethodListener
+
+1. afterInvocattion(): Invoke after each method
+2. beforeInvocation(): Invoke before each method
+
+IRetryAnalyzer - this interface is used to rerun the failed test based on the counter value
+ - has only one method retry(ITestResult result)
+
+Point: Point class in Selenium web driver is used to get the X and Y coordinates of the image
+
+
+V model -
+
+Business requirements Spec.             -------------->                           Acceptance Testing
+                 |                                                                                                  
+System requirements Spec.               -------------->                           System Testing     
+*******************************************************************************************************************************
+Parameterization using Datatable:
+ 
+Execution Processs:
+
+clean test -Dcucumber.options="src/main/resources/feature/blcom --tags @regression --glue classpath:com/macys/oes/qa/stepdef/blcom --glue classpath:com/macys/oes/qa/stepdef/bwedd --glue classpath:com/macys/oes/qa/stepdef/bstore --glue classpath:com/macys/oes/qa/stepdef/bcommon --glue classpath:com/macys/oes/qa/stepdef/common" 
+
+
+
+
+
+we can get the data from feature file using raw() from Datatable class
+
+Datatable.raw() : It will return list of data in "List"  
+
+For Maps:
+Datatable usercredentials;
+usercredentials.asMaps(String.class,String.class);
+
+it will return List of Data in Key value pair;
+
+Needs to do one exercise on MAPS
+
+
+
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+		features = "Feature"
+		, glue={"stepdefination"}
+		, tags = {"~@SmokeTest", "~@RegressionTest"} :- To execute the specified tags and "~" is used to exclude the mentioned tag execution
+		, dryRun = false : will give dryrun(without application flow) if set to True
+		, monochrome = false
+		, format = {"json:Folder_Name/cucumber.json","junit:Folder_Name/cucumber.xml"} - report is generated for the data in json file and in xml file
+		
+		)
+public class TestRunner
+{
+	
+	
+}*******************************************************************************************************************************
+Please let me know if you need any other information.
+
+1. Page Object model advantages
+2. Git Init command, commit  command
+3. Constructor 
+Static Polymorphism, Dynamic Polymorphism
+*********************************************************************************************************************************************************************
+
+A defect which exists during testing yet unfound by the tester which is eventually found by the tester/end-user is also called bug leakage. 
+
+A bug release is when a particular version of s/w is released with a set of known bug(s)/defect(s). These bugs are usually low severity and/or low priority bugs.
+************************************************************************************************************************************************************************
+To get Parent Node of an element
+WebElement currentTable = (WebElement) ((JavascriptExecutor) driver)
+				.executeScript("return arguments[0].parentNode;", <Locator of child node>);
+****************************************************************************************************************************************************************************
+Pyramid Structure Java code
+  *
+*  *
+*  *  *
+public class Programs {
+
+	public static void main(String[] args) {
+		
+		int c = 1;
+        for (int i = 1; i <= 3; i++) {
+            for (int j = i; j < 3; j++) {
+                System.out.print(" ");
+            }
+            for (int k = 1; k <= c; k++) {
+                if (k % 2 == 0)
+                    System.out.print(" ");
+                else
+                    System.out.print("*");
+            }
+            System.out.println();
+             c += 2;
+        }
+
+	}
+
+}
+****************************************************************************************************************************************************************************
+Fluent Wait
+Each FluentWait instance defines the maximum amount of time to wait for a condition, as well as the frequency with which to check the condition. Furthermore, the user may configure the wait to ignore specific types of exceptions whilst waiting, such as NoSuchElementExceptions when searching for an element on the page.
+
+
+ // Waiting 30 seconds for an element to be present on the page, checking
+
+  // for its presence once every 5 seconds.
+
+  Wait wait = new FluentWait(driver)
+
+    .withTimeout(30, SECONDS)
+
+    .pollingEvery(5, SECONDS)
+
+    .ignoring(NoSuchElementException.class);
+
+  WebElement foo = wait.until(new Function() {
+
+    public WebElement apply(WebDriver driver) { 
+
+    return driver.findElement(By.id("foo"));
+
+    }
+
+   });
+ 
+******************************************************************************************************************************************************************************
+Parallel execution in TestNG
+Maven Customised reports for TestNG and Cucumber
+Java code to get only Characters from String "12#@$J%^a86v1215a46#$"
+Reverse of ArrayList - {"123", "Anji", "5643", "Test Sample"}
+Common Methods in Framework
+Xpaths
+Database Joins, Sub Query, Student names starts with only 'S'. 
+Get records of which inserted only in Last week/ Last Month/Specific Month/
+
+SELECT * from MESSAGE where (CREATE_TS BETWEEN '14-11-18'AND '15-11-18');
+
+SELECT * from MESSAGE where (CREATE_TS BETWEEN '19-11-18'AND '20-11-18');
+
+select * FROM MESSAGE where    CREATE_TS >= '19-11-18' and     CREATE_TS < '20-11-18';
+
+
+What is Glue/Background Tag/Screenshot capturing
+Maven Third Party Jar for Cucumber customised Reports  
+
+*******************************************************************************************************************************************************************************
+Comparison Between TestNG and Junit - https://www.guru99.com/junit-vs-testng.html
+
+S.N.	Description	                                                                                    TestNG	                                                              JUnit 4
+1	Test annotation	                                                                             @Test	                                                                      @Test
+2	Executes before the first test method is invoked in the current class  @BeforeClass	                                                      @BeforeClass
+3	Executes after all the test methods in the current class	                    @AfterClass	                                                      @AfterClass
+4	Executes before each test method	                                                    @BeforeMethod	                                                       @Before
+5	Executes after each test method	                                                    @AfterMethod	                                                       @After
+6	annotation to ignore a test	                                                            @Test(enable=false)	                                              @ignore
+7	annotation for exception	                                                                    @Test(expectedExceptions = ArithmeticException.class)	@Test(expected = 
+                                                                                                                                                                                                           ArithmeticException.class)
+8	timeout(milli Seconds)	                                                                     @Test(timeout = 1000)	                                     @Test(timeout = 1000)
+9	Executes before all tests in the suite	                                            @BeforeSuite	                                                      n/a
+10	Executes after all tests in the suite	                                                    @AfterSuite	                                                              n/a
+11	Executes before a test runs	                                                            @BeforeTest	                                                      n/a
+12	Executes after a test runs	                                                            @AfterTest	                                                              n/a
+13	Executes before the first test method is invoked that belongs to 
+any of these groups is invoked	                                                            @BeforeGroups	                                                      n/a
+14	run after the last test method that belongs to any of the groups here@AfterGroups	                                                      n/a
+
+Difference Between JUnit and TestNG
+
+1. In TestNG, Parameterized test configuration is very easy while It is very hard to configure Parameterized test in JUnit.
+2. TestNG support group test but it is not supported in JUnit.
+3. TestNG has a feature to configure dependency test. Dependency test configuration for software web application is not possible in JUnit.
+4. TestNG support @BeforeTest, @AfterTest, @BeforeSuite, @AfterSuite, @BeforeGroups, @AfterGroups which are not supported in JUnit.
+5. Test prioritization, Parallel testing is possible in TestNG. It is not supported by JUnit.
+
+******************************************************************************************************************************************************************************
+What is the difference between Page Object Model (POM) and Page Factory:
+
+Page Object is a class that represents a web page and hold the functionality and members.
+Page Factory is a way to initialize the web elements you want to interact with within the page object when you create an instance of it.
+        @FindBy(xpath = "//table[3]/tbody/tr/td/table/tbody/tr[3]/td")
+	public WebElement bodyTextLine;
+
+Advantages of Page Object Model Framework:
+1. Code reusability – We could achieve code reusability by writing the code once and use it in different tests.
+2. Code maintainability – There is a clean separation between test code and page specific code such as locators and layout which becomes very easy to maintain code. Code changes only on Page Object Classes when a UI change occurs. It enhances test maintenance and reduces code duplication.
+4. Object Repository – Each page will be defined as a java class. All the fields in the page will be defined in an interface as members. The class will then implement the interface.
+5. Readability – Improves readability due to clean separation between test code and page specific code
+
+****************************************************************************************************************************************************************************
+EXCEPTIONS:
+1) Checked: are the exceptions that are checked at compile time. If some code within a method throws a checked exception, then the method must either handle the exception or it must specify the exception using throws keyword.
+
+For example, consider the following Java program that opens file at location “C:\test\a.txt” and prints the first three lines of it. The program doesn’t compile, because the function main() uses FileReader() and FileReader() throws a checked exception FileNotFoundException. It also uses readLine() and close() methods, and these methods also throw checked exception IOException
+
+
+import java.io.*; 
+  
+class Main { 
+    public static void main(String[] args) { 
+        FileReader file = new FileReader("C:\\test\\a.txt"); 
+        BufferedReader fileInput = new BufferedReader(file); 
+          
+        // Print first 3 lines of file "C:\test\a.txt" 
+        for (int counter = 0; counter < 3; counter++)  
+            System.out.println(fileInput.readLine()); 
+          
+        fileInput.close(); 
+    } 
+} 
+
+2) Unchecked are the exceptions that are not checked at compiled time. In C++, all exceptions are unchecked, so it is not forced by the compiler to either handle or specify the exception. It is up to the programmers to be civilized, and specify or catch the exceptions.
+In Java exceptions under Error and RuntimeException classes are unchecked exceptions, everything else under throwable is checked.
+
+************************************************************************************************************************************************************************
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+ 
+<suite name="Suite" parallel="tests">
+ 
+ <test name="FirefoxTest">
+ 
+ <parameter name="browser" value="firefox" />
+ 
+ <classes>
+ 
+ <class name="automationFramework.MultiBrowser" />
+ 
+ </classes>
+ 
+ </test>
+ 
+ <test name="IETest">
+ 
+ <parameter name="browser" value="ie" />
+ 
+ <classes>
+ 
+ <class name="automationFramework.MultiBrowser" />
+ 
+ </classes>
+ 
+ </test>
+ 
+</suite>
+***************************************************************************************************************************************************************************
+1. Reverse of String String str = "Anurag" without using any Sting Buffer 
+2. What is the difference between Length, length(), Size()
+3. What are OOPS Concepts
+4. What is the difference between Method Overloading, Method Overriding
+5. What is an Interface, when to use Interface
+6. What is Abstraction
+7. Can we achieve 100% abstraction using Abstract class
+8. What is Encapsulation, give some examples
+9. What is inheritance, Multiple Inheritance and Multilevel Inheritance
+10. If we try to use Multiple Inheritance using classes in Java, what will happen
+11. String s1 = "Nisum", String s2 = "Anji", can you swap these 2 without using third variable?
+12. Difference b/w, Arrays and ArrayList/Collection
+13. Difference b/w, HashSet, TreeSet, LinkedHashSet, when to use which one
+14. How to get elements from Arraylist,  - For loop, Iterator, ListIterator, For Each loop
+15. How to insert values into MAP, and retrieve it
+16. What is the use of EntrySet
+17. What is the use of Cucumber BDD Framework
+18. Write the cucumber Runner file
+19. What is the difference b/w Scenario and Scenario Outline
+20. What is the use of Background tag
+21. How we can run 2 tags say @regression, @sanity like AND or OR  - "@regression, @sanity" - AND "@regression","@sanity" - OR
+22. Maven usage and how many repositories we have in Maven
+
+************************************************************************************************************************************************************************
+
+Write a program to verify a Prime number
+Explain about your self
+What are your Roles&Responsibilities
+Explain about your Framework structure
+What are the OOPS Concepts
+Where you used OOPS Concepts in your Framework
+What is Abstraction, Inheritance and Interface
+What are the collections you know
+Explain the differences between List and Set
+***********************************************************************************************************************************
+public void reverseOfList()
+	{
+		ArrayList ar = new ArrayList();
+		ar.add(152);
+		ar.add("Anji");
+		ar.add(145);
+		ar.add("Sample");
+		ar.add(87);
+		System.out.println(ar);
+		Collections.reverse(ar);
+		System.out.println(ar);
+		System.out.println("************");
+		for(int i = ar.size()-1;i>=0;i--)
+		{
+			System.out.print(ar.get(i));
+		}
+	}
+	public void specificString(String s)
+	{
+		String str = s;
+		String num = "", special = "", charString = "";
+		for(int i = 0; i<str.length();i++)
+		{
+			char ch = str.charAt(i);
+			if(Character.isDigit(ch))
+			{
+				num = num+ch;
+			}
+			else if(Character.isAlphabetic(ch))
+			{
+				charString = charString + ch;
+			}
+			else
+				special = special + ch;
+		}
+		System.out.println(num);
+		System.out.println(charString);
+		System.out.println(special);
+	}
+public void caseConverting(String Str)
+	{
+		String s = Str;
+		String output="";
+		int l = s.length();
+		System.out.println("Input String: "+s);
+		for(int i=0; i<l;i++)
+		{
+			char ch = s.charAt(i);
+			if(Character.isAlphabetic(ch))
+			{
+				if(Character.isLowerCase(ch))
+				{
+					s=s.replace(ch, Character.toUpperCase(ch));
+				}
+				else
+				{
+					s=s.replace(ch, Character.toLowerCase(ch));
+				}
+			}
+			else
+			{
+				
+			}
+			//System.out.println("Final String: "+s);
+		}
+		System.out.println("Final String: "+s);
+		
+	}
+public void possibleNumberCombinations()
+	{
+		int[] num = {1,2,3};
+		for(int x = 0; x<3; x++)
+		{
+			for(int y = 0; y<3; y++)
+			{
+				for(int z = 0;z<3;z++)
+				{
+					if((x!=y)&&(y!=z)&&(z!=x))
+					{
+						System.out.println(num[x]+""+num[y]+""+num[z]);
+					}
+				}
+			}
+		}
+	}
+
+*************************************************************************************************************************************
+boolean b  = false
+
+if(b=true)
+{
+Sysout("Hello")
+}
+else
+{
+SYSout("Anji")
+
+O/P: Hello - since, we are assigning true value in if condition
+
+
+*****************************************************************************
+What is output of below program 
+
+public class Main  
+{
+    void a()
+    {
+        try{
+        System.out.println("a(): Main called");
+        b();
+        }catch(Exception e)
+        {
+            System.out.println("Exception is caught");
+        }
+    }
+    void b() throws Exception
+    {
+     try{
+         System.out.println("b(): Main called");
+         c();
+     }catch(Exception e){
+         throw new Exception();
+     }
+     finally  
+     {
+         System.out.println("finally block is called");
+     }
+    }
+    void c() throws Exception  
+    {
+        throw new Exception();
+    }
+ 
+    public static void main (String args[])
+    {
+        Main m = new Main();
+        m.a();
+    }
+}
+
+****************************************************************************************************************************************************************
+DB Connection in Selenium
+public static void  main(String[] args) throws  ClassNotFoundException, SQLException {													
+
+//Connection URL Syntax: "jdbc:mysql://ipaddress:portnumber/db_name"		
+                String dbUrl = "jdbc:mysql://localhost:3036/emp";					
+//Database Username		
+		String username = "root";	
+                String password = "guru99";				
+//Query to Execute		
+		String query = "select *  from employee;";	
+//Load mysql jdbc driver		
+           	Class.forName("com.mysql.jdbc.Driver");			           
+//Create Connection to DB		
+            	Connection con = DriverManager.getConnection(dbUrl,username,password);          
+//Create Statement Object		
+       	   Statement stmt = con.createStatement();					
+// Execute the SQL Query. Store results in ResultSet		
+         		ResultSet rs= stmt.executeQuery(query);							
+// While Loop to iterate through all data and print results		
+				while (rs.next()){
+			        		String myName = rs.getString(1);								        
+                            String myAge = rs.getString(2);					                               
+                            System. out.println(myName+"  "+myAge);		
+                    }		
+      			 // closing DB Connection		
+      			con.close();			
+		}
+*************************************************************************************************************8
+
+
