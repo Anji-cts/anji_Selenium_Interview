@@ -1,0 +1,385 @@
+import java.io.*;
+
+class MyCode {
+	public static void main (String[] args) {
+		
+    String name = "Anjaneyulu Madupu";
+    
+    1. first non-repeated char -> j //output
+    2. most repeated char -> u -> 4 //output
+    
+2. What is scope of default and protected access specifier
+3. What is diff b/w String bbuffer and String builder
+4. How to read content from text file
+5. How to count no. of word from text file
+6. What is abstarct class and whenwe use it and why?
+7. Wht is diff b/w interface and abstarct class
+8. can we create object to abstract class? if not why?
+9. In java, where the .class files will be created after compile
+10. Write program to disply characters , digits and special chars separately from String s = "Quality1234Test@3!%$ng"
+11. Write a program to display Polindrom numbers
+12. How to read specific cell data from excel
+13. How to get the data from Excel
+14. What is diff b/w Hashmap & HashTable
+15. What is diff b/w List & Set
+16. Have excel with Name and City column, how would you get that data into HashMap
+17. What is diff b/w Throw and Throws keyword
+18. What are exceptions you worked till now
+19. What is IllegalStatementException and when you will get that
+20. Write a program to display maximum repeated word from file
+21. Write a program to display first non repeated character from S = "Anjaneyulu Madupu"
+22. What is diff b/w Iterator and List iterator
+23. What is diff b/w Is-A-Relationship and Has-A-Relationship in java
+24. What is dynamic polymorphism and static polymorphism
+25. What is encapsulation
+26. What are features you know in JAVA 8
+27. public class A
+		{
+			public A(int i)
+			{
+		 
+			}
+		}
+		 
+		public class B extends A
+		{
+		  public B(int ){
+		  }
+		}
+
+		public class Client {
+			public static void main(String[] args) {
+				B b = new B(); // compile error
+			}
+		}
+
+What is the output/any error for any specific reason
+28. What is use of Super and This keyword 
+29. method overloading: 
+		public void add(int a, int b)
+		{
+		}
+		public void add(int a, float b, long c)
+		{
+
+		}
+30. method overrding
+		class Test{
+
+		Test()
+		{
+
+		}
+		 public void add(int a, int b)
+		 {
+		 
+		 }		 
+		}
+		class Testqa extends Test{
+		Testqa()
+		{
+		super();
+		this:
+		}
+
+31. Write a program to accept input from user and verify it is lessthan or not equal 5, iterate it for 5 times else, ask him to enter lesstahn 5
+32. How to get values from Hashmap
+		HashMap hm = new HashMap();
+		hm.put("a",1)
+		hm.put("b",2)
+
+		Map.EntrySet m = hm.EntrySet()
+		while(m!=null)
+		{
+		m.getKey(), m.getValue()
+33. Swap of 2 numbers without third variable x=10 y=5, String s1 = Test, s2= Quality
+		x=x+y 15
+		y=x-y = 10
+		x= x-y = 5
+34. String str="aaaaabababaaa"
+Write down progrm to find the patterns count like "ba" in above string
+write down the character count in above
+
+35. 10, 5,15,8,22,95,1,2 - Sort the above values in an Array
+36. Output of below program - 
+		class Bike{
+		 int speedlimit=90;
+		}
+		class Honda3 extends Bike{
+		 int speedlimit=150;
+		 public static void main(String args[]){
+		  Bike obj=new Honda3();
+		  System.out.println(obj.speedlimit);
+		   }
+ 37. Output of below program - 
+			public class Main  
+			{
+				void a()
+				{
+					try{
+					System.out.println("a(): Main called");
+					b();
+					}catch(Exception e)
+					{
+						System.out.println("Exception is caught");
+					}
+				}
+				void b() throws Exception
+				{
+				 try{
+					 System.out.println("b(): Main called");
+					 c();
+				 }catch(Exception e){
+					 throw new Exception();
+				 }
+				 finally  
+				 {
+					 System.out.println("finally block is called");
+				 }
+				}
+				void c() throws Exception  
+				{
+					throw new Exception();
+				}
+			 
+				public static void main (String args[])
+				{
+					Main m = new Main();
+					m.a();
+				}
+			}
+38. For a given String = 123 write program to create possible combintions 123 321 213 etc
+String s = GOD  like GDO DGO DOG OGD ODG etc.
+39. What is meantby Threadsafe
+40. What re the OOPS concepts used in your Framework and where
+41. What are the wrapper classes in JAVA
+42. Write a program to do sum of diagonls of 3X3 matrix
+****************************************************** SQL **********************************************************
+ 
+1. SQL query to print the first three characters of  FIRST_NAME from Worker table.
+2. Write an SQL query to fetch worker names with salaries >= 50000 and <= 100000.
+3. How to disply firstname and Lastname as combine from Employee table
+4. How to get the second highest salary of employee from Employee table
+5. 
+Name  City Salary
+Anji	Hyderabad	1500
+Warner	Delhi		1800
+Dhoni	Chenni		1600
+Panth	Delhi		2200
+I want to display the salary of employees in Delhi
+6. Diff b/w Drop, Delete and Truncate
+7. Employee and Department tables, Write a query to display employees who works for specific department
+8. How to connect to Database using selenium
+
+
+
+
+********************************************** Selenium/Testing *************************************************
+
+1. Application: Can you give your approach to validate an application if i have 
+	UI(Angular) -> micro-services(Spring-boot/Node JS) -> DB(multiple schemas)
+	Home Page
+	Login Page
+	Summary Page
+2. What re diff testing types you know
+3. What is mean by Sanity testing and Smoke testing
+4. What is Test strategy document , did you prepared any
+5. What is TestPlan document and RTM document
+6. What is White box and Blockbox testing
+7. Can you give Testing Types, Test Scenarios, and Automation approach for below - 
+	On Amazon website - have Phone to place an order 
+8. What is Threadcount in testng
+9. What is default Threadcount in testng
+10. How to do parallel execution in testng
+11. How to generate testNG xml file dynamically
+12. What are annotations you used in testNG
+13. What is DataProvider annotation and how to use it
+14. How to prioritize the testmethods in testNG
+15. How to skip the test from execution
+16. How to skip executing a test if the prior test method got failed
+17. How you are handling multiple browser execution
+18. How you are handling test data in your framework
+19. How you are handling if set of test data is specific to environment say some test data is only on UAT and another like some functionality is only available on IE Browser then how you will handle this
+20. What ar ethe Annotations you aware and list them in order
+21. Have regression test cases, sanity test cases, smoke test cases - want to run the regression test cases if only the Smoke tests passed, how will you do that
+22. Wht re Assertions you know, diff b/w Hard and Soft assertion
+23. What is diff b/w quit() & close(), which one used in your framework and why?
+24. what is meant by WebDriver, 
+25. How did you created your driver object nd how you accept tht across different classes
+26. What is different in below 2 statements
+	WebDriver driver = new ChromeDriver()
+	ChromeDriver driver = new ChromeDriver()
+	Which one you used in your framework and why?
+27. How you re executing your scripts xmlfiles/ or any other?
+28. What are the best practices for Automation framework
+29. How you will do languge selection if ask you to do a frmework design
+30. How you will select kind of framework if i have new application to start automation
+31. Create a framework for below scenario 
+	Open NDTV website, capture anyone city weather details
+	Get the Weather details ofsame city from Google weather API
+	DO the Assertions for the both
+	Share it on GIT repo
+	create READ Me document to know the frmework design
+32. how to ignore target files in git uploading, 
+33. How to capture screenshot in selenium
+34. How to get the dropdown values from Dropdown, How to get the number of duplicates from dropdown if it has some duplicate values in it
+35. What are different locators strategy nd which one is prefarrable and why?
+36. What are the exceptions you know in your framework and how you are handling
+37. How you will handle 'ElementNotVisibleException' and 'StaleElementReferecnceException'
+38. What are the diff waits you know
+39. What is diff b/w get & navigate
+40. How you handle cookies in selenium
+41. How you handle multiple windows in selenium and Frames
+42. How to get active links on webpage
+43. Have webpage click on 'submit' itwill be open new window and you need to count no of links on tht page and come back to the initil page 
+44. What is diff b/w findElement & findElements
+45. How to handle Alerts in selenium
+46. How to handle if selenium .click() is not working to click on element
+47. What is diff b/w Actions nd Robot class
+48. How to get text from Hidden element, how to click on Hidden element on webpage
+49. How will you do pagescrollin selenium
+50. What are the challenges you faced in your Automation and how you resolved
+51. Where do you want to see after 5 years as per your role/next goal 
+52. What are disadvantages of Parallel execution
+53. What are synchronization techniques you have used
+54. What additional enhancements you did to your frmework till now
+55. What kind of reports you are using
+56. What are the Listeners you used in your framework
+57. What are headless browsers you know
+58. Have youtube link with videos link, initially it loads first 50 and by scrolling it loads next 50 like total 500 are there, if i have given one video toverify it availability on the page, how you will do that?
+59. What are different techniques in dynamic Xpath creation
+60. Wht is difference b/w implicit & explicit waits
+61. What is the default wait time for implicitwait in selenium
+62. Suppose if i have 5 seconds implicit wait and another 10 seconds explicit wait to search for an element, while executing the script how much time it will wait to search forthat element say 5 or 10 or 15?
+63. How to perform Drag & drop ction in selenium
+64. How to perform Keybord actions and Mouse related actions
+65. 
+
+
+********************************************Cucumber ***************************************************
+1. What is meant by BDD and what are its advantages
+2. What is Background tag
+3. How will you manage test data in cucumber
+4. How you will do multiple browser execution in Cucumber
+5. How you will do parallel execution in cucumber
+6. Have to skip executing one scenario if the prior scenario got filed , how you will do it in cucumber
+7. How to pass multiline string as argument for a step in scenario
+8. can you give the components of BDD structure/framework
+9. can you write down runner file
+10. How Maven will identify your runner file to start execute
+*************************************************MAVEN *************************************************
+1. What is build tool you used and why?
+2. What are Maven advantages
+3. What is life cycle of Maven
+4. What is Clean step will do in Maven Life cycle
+5. Where the .class file will be stored after compile
+6. What is surefire plugin 
+7. What is different b/w Plugin & dependencies
+8. what are the repositories available in Maven
+9. 
+
+
+************************************************** GIT and Jenkins ***************************************
+1. How to initiate git repository
+2. How to roll back previous commit
+3. How to resolve merge conflicts/ why we should get conflicts/
+4. What are the things you should follow for code review
+5. What are the brnaches hirarchy you are following , how you will manage that into Jenkins
+6. What are basic things in Jenkins configuration
+7. Where you will get source code on Jenkins
+8. What is the execution commnd you used in Jenkins
+9. How you will manage if i want to execute only regression suite on Jenkins
+10. Do you know Selenium GRID?
+11. Pipielines creation?
+12. 
+
+
+************************************************************************************
+https://www.goibibo.com/flights/?utm_source=SVGMedia&utm_medium=DisplayAffiliate&utm_campaign=flights_11
+
+Create selenium script to select 4 cities From & To and check for availability of flights and book one , The input city names should be parameterzied
+
+
+
+
+***********************Rest Assured API ***************************************
+1. 
+	{
+	"firstName": "John",
+	"lastName" : "doe",
+	"age" : 26,
+	"address" : {
+	"streetAddress": "naist street",
+	"city" : "Nara",
+	"postalCode" : "630-0192"
+	} },
+
+How to get City value from above response.
+2. 
+https://jsonplaceholder.typicode.com/users
+
+String baseuri = "https://jsonplaceholder.typicode.com";
+endpoint = "/users", endpoint = "posts" create framework and validate the response for these endpoints
+
+GET
+RestAssured.BaseURI = baseuri;
+
+Response response = RestAssured.given().
+when().get(endpoint).extract().body()//response;
+
+response.getStatuscode();
+if it is 200 then
+
+will use 
+JSONPath path = response.JSONPath();
+path.
+
+2. What is RESTful and Microservices
+3. what is the diff b/w POST and PUT when to use which one why?
+4. What is diff b/w POST and PATCH
+5. What are the response codes
+6. What is 400 and 401, 404 response codes
+7. What are the Authentication types you have been worked
+8. What is the PUT prameters
+9. How did you validate Headers in response
+10. How did you used asserts to validate in response
+11. What is baseURI and what is endpoint
+12. How will you know info about the API for validation
+
+
+******************************************************************************************************************************
+You need to design a Vending Machine which
+ Accepts coins of 1,5,10,25 Rupees
+ Allow user to select products Coke(25), Pepsi(35), Soda(45)
+ Allow user to take refund by canceling the request.
+ Return selected product and remaining change if any
+ Allow reset operation for vending machine supplier.
+
+
+
+String parentwindow = driver.getWindowHandle();
+driver.findElement(By.Id()).click();
+
+List<WebElement> links = driver.findElements(By.tag()); - 50
+for(int i=0;i<links.size();i++)
+{
+links.get(i).click();
+
+
+}
+Set<String> handles = driver.getWindowHandles();
+
+for()
+{
+driver.switchTo().window(handle);
+
+
+}
+JavaScriptExecutor executor=(JavaScriptExecutor)driver;
+executor.executeScripte(arguments[0].click(),element);
+
+
+Actions 
+
+File file = (TakesScreenShotAs)getScreenShot(driver,OUTPUTTYPE.File);
+FileUtils.CopyFile(file,new File(filepath/test.png)); 
